@@ -1,6 +1,18 @@
 services:
   web:
-    image: nginx:alpine
+    image: python:3.12-alpine
+    user: "65534:65534"
+    command: ["python", "-m", "http.server", "8080", "--bind", "0.0.0.0"]
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - "127.0.0.1:18080:8080"
+    mem_limit: 64m
+    cpus: "0.25"
+    pids_limit: 64
     networks:
       - sandbox_internal
 
