@@ -1,9 +1,0 @@
-services:
-  web:
-    image: nginx:alpine
-    networks:
-      - sandbox_internal
-
-networks:
-  sandbox_internal:
-    internal: true
