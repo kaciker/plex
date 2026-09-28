@@ -1,8 +1,7 @@
 services:
   web:
-    image: python:3.12-alpine
-    user: "65534:65534"
-    command: ["python", "-m", "http.server", "8080", "--bind", "0.0.0.0"]
+    build:
+      context: .
     read_only: true
     cap_drop:
       - ALL
