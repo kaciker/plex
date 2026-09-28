@@ -1,21 +1,9 @@
-version: "3.3"
-
 services:
+  web:
+    image: nginx:alpine
+    networks:
+      - sandbox_internal
 
-  plex:
-    image: linuxserver/plex
-    container_name: plex
-    network_mode: host
-
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/Madrid
-      - VERSION=docker
-    volumes:
-      - /torrents/Media/Plex/config:/config
-      - /torrents/Media/download:/media
-
-    restart: unless-stopped
-    
-    
+networks:
+  sandbox_internal:
+    internal: true
