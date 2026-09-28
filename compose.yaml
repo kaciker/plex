@@ -1,0 +1,12 @@
+services:
+  web:
+    image: python:3.13-alpine
+    command: ["python", "-m", "http.server", "8080"]
+    networks:
+      - sandbox_internal
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  sandbox_internal:
+    internal: true
